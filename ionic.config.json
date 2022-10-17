@@ -1,0 +1,7 @@
+{
+  "name": "ionic-snake",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
