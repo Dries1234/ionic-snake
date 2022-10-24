@@ -1,6 +1,6 @@
 <template>
   <ion-page>
-    <ion-tabs>
+    <ion-tabs >
       <ion-router-outlet></ion-router-outlet>
       <ion-tab-bar slot="bottom">
         <ion-tab-button tab="tab1" href="/tabs/tab1">
@@ -39,3 +39,6 @@ export default defineComponent({
   }
 });
 </script>
+
+<style scoped>
+</style>
