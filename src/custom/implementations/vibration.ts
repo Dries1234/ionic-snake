@@ -1,4 +1,5 @@
-import { Vibration } from "@awesome-cordova-plugins/vibration";
+import { Vibration, VibrationOriginal } from "@awesome-cordova-plugins/vibration";
+import { Capacitor } from "@capacitor/core";
 
 export class VibrationMock {
     vibrate(value: number) {
@@ -6,7 +7,11 @@ export class VibrationMock {
     }
 }
 
-export default {
-    production: Vibration,
-    development: new VibrationMock()
+
+let Vibrator: VibrationMock | VibrationOriginal;
+if (Capacitor.isNativePlatform()) {
+    Vibrator = Vibration;
+} else {
+    Vibrator = new VibrationMock;
 }
+export default Vibrator;

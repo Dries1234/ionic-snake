@@ -2,13 +2,8 @@ import settings from "@/services/settings";
 import { VibrationOriginal } from "@awesome-cordova-plugins/vibration";
 import { Capacitor } from "@capacitor/core";
 import { Color } from "@ionic/core";
-import vibrator, { VibrationMock } from "../custom/implementations/vibration";
-let vibration: VibrationOriginal | VibrationMock;
-if (Capacitor.isNativePlatform()) {
-    vibration = vibrator.production;
-} else {
-    vibration = vibrator.development;
-}
+import Vibrator from "../custom/implementations/vibration";
+
 interface Coordinates {
     x: number;
     y: number;
@@ -112,7 +107,7 @@ export class Snake {
         for (let i = 1; i < this.snake.length; i++) {
             if (head.x == this.snake[i].x && head.y == this.snake[i].y) {
                 clearInterval(this.gameLoop);
-                vibration.vibrate(2000);
+                Vibrator.vibrate(2000);
                 await this.flickerSquare("#cc341d", this.snake[i]);
                 this.context.fillStyle = "rgba(0,0,0,0.4)";
                 this.context.fillRect(
